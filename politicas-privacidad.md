@@ -1,3 +1,5 @@
+> **Archivo histórico.** La versión publicada de esta política está en [`politicas-privacidad.html`](politicas-privacidad.html). Este `.md` se conserva solo como referencia.
+
 # Política de privacidad
 
 Esta política de privacidad se aplica a la aplicación "CeluVentas" (en adelante, la "Aplicación") para dispositivos móviles, desarrollada por Damián Diez (en adelante, el "Proveedor de servicios"). La Aplicación se proporciona de forma gratuita y "tal cual".

@@ -291,47 +291,30 @@
       border-radius: 6px;
     }
 
-    /* —— Details (política completa) —— */
-    .policy-toggle {
+    .policy-cta-wrap {
       margin-top: 1.75rem;
-      border: 1px solid var(--color-border);
-      border-radius: 8px;
-      overflow: hidden;
-      background: var(--color-surface);
-    }
-
-    .policy-toggle summary {
-      padding: 1rem 1.15rem;
-      font-weight: 600;
-      cursor: pointer;
-      color: var(--color-accent);
-      background: var(--color-bg);
-      list-style: none;
-    }
-
-    .policy-toggle summary::-webkit-details-marker {
-      display: none;
-    }
-
-    .policy-toggle summary::before {
-      content: '▸ ';
-      display: inline-block;
-      transition: transform 0.2s;
-    }
-
-    .policy-toggle[open] summary::before {
-      transform: rotate(90deg);
-    }
-
-    .policy-toggle__body {
-      padding: 1.25rem 1.15rem 1.5rem;
+      padding-top: 1.25rem;
       border-top: 1px solid var(--color-border);
-      font-size: 0.95rem;
     }
 
-    .policy-toggle__body h3 {
-      font-size: 1rem;
-      margin-top: 1.25rem;
+    .policy-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.75rem 1.15rem;
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--color-accent);
+      background: #e8f2fc;
+      border: 1px solid #c5ddf5;
+      border-radius: 8px;
+      text-decoration: none;
+    }
+
+    .policy-cta:hover {
+      color: var(--color-accent-hover);
+      background: #dceaf9;
+      text-decoration: none;
     }
 
     /* —— Eliminación —— */
@@ -530,124 +513,9 @@
             del dispositivo.
           </p>
 
-          <details class="policy-toggle">
-            <summary>Ver política completa</summary>
-            <div class="policy-toggle__body">
-              <p>
-                Esta política de privacidad se aplica a la aplicación
-                <strong>&ldquo;CeluVentas&rdquo;</strong> (en adelante, la &ldquo;Aplicación&rdquo;)
-                para dispositivos móviles, desarrollada por
-                <strong>Damián Diez</strong> (en adelante, el &ldquo;Proveedor de servicios&rdquo;).
-                La Aplicación se proporciona de forma gratuita y &ldquo;tal cual&rdquo;.
-              </p>
-
-              <h3>¿Qué información obtiene la Aplicación y cómo se utiliza?</h3>
-              <p><strong>Información proporcionada por el usuario</strong></p>
-              <p>
-                La Aplicación recopila la información que usted proporciona voluntariamente
-                al utilizar ciertas funciones. El registro no es obligatorio, aunque algunas
-                funciones pueden no estar disponibles sin cuenta.
-              </p>
-              <p>
-                El Proveedor de servicios podrá utilizar la información que usted proporcione
-                para contactarlo con avisos importantes relacionados con la Aplicación.
-              </p>
-              <p><strong>Información recopilada automáticamente</strong></p>
-              <p>
-                La Aplicación puede recopilar automáticamente información a través de servicios
-                de terceros: tipo de dispositivo, dirección IP, sistema operativo, datos de uso,
-                informes de errores y rendimiento. Se utiliza para mejorar estabilidad,
-                rendimiento y experiencia del usuario.
-              </p>
-
-              <h3>¿Ubicación en tiempo real?</h3>
-              <p>
-                Esta aplicación no recopila información precisa en tiempo real sobre la
-                ubicación de su dispositivo móvil.
-              </p>
-
-              <h3>¿Se almacena la información en un servidor?</h3>
-              <p>
-                Los datos pueden almacenarse localmente en el dispositivo y/o en servicios
-                cloud asociados a su cuenta. Se utiliza infraestructura de terceros para
-                almacenamiento y sincronización. El Proveedor no vende ni comparte el
-                contenido comercial ingresado por el usuario. Datos técnicos y analíticos
-                pueden transmitirse a terceros para monitoreo y mejora.
-              </p>
-
-              <h3>¿Terceros tienen acceso a la información?</h3>
-              <p>
-                Solo se comparten datos técnicos y de uso con proveedores externos para
-                análisis, informes de errores y publicidad. El proveedor no vende ni
-                comparte datos personales de los usuarios.
-              </p>
-              <ul>
-                <li>Servicios de Google Play</li>
-                <li>AdMob</li>
-                <li>Google Analytics para Firebase</li>
-                <li>Firebase Crashlytics</li>
-                <li>Firebase Authentication</li>
-                <li>Cloud Firestore</li>
-              </ul>
-
-              <h3>Derechos de exclusión</h3>
-              <p>
-                Puede detener la recopilación desinstalando la aplicación mediante los
-                procesos estándar de su dispositivo o la tienda de aplicaciones.
-              </p>
-
-              <h3>Retención y gestión de información</h3>
-              <p>
-                Los datos locales permanecen bajo su control y pueden eliminarse borrando
-                datos de la app o desinstalándola. Los datos sincronizados se eliminan del
-                servidor al solicitar la baja de cuenta o, en algunos casos, tras períodos
-                prolongados de inactividad (por ejemplo, un año sin actividad).
-              </p>
-              <p>
-                La información técnica automática se conserva según las políticas de los
-                proveedores externos. Consultas:
-                <a href="mailto:android.endnote767@passinbox.com">android.endnote767@passinbox.com</a>.
-              </p>
-
-              <h3>Niños</h3>
-              <p>
-                No está destinada a menores de 13 años. No se recopila intencionalmente
-                información de menores; si se detecta, se eliminará. Contacto para padres
-                o tutores: mismo correo de soporte.
-              </p>
-
-              <h3>Publicidad</h3>
-              <p>
-                La Aplicación puede mostrar anuncios mediante Google AdMob, conforme a las
-                políticas de privacidad del proveedor.
-              </p>
-
-              <h3>Seguridad</h3>
-              <p>
-                Se adoptan medidas razonables para proteger la información. Ningún método
-                de transmisión o almacenamiento es 100% seguro.
-              </p>
-
-              <h3>Cambios</h3>
-              <p>
-                Esta política puede actualizarse periódicamente en esta página. El uso
-                continuado tras los cambios implica aceptación. Vigente desde el
-                <strong>26 de mayo de 2026</strong>.
-              </p>
-
-              <h3>Su consentimiento</h3>
-              <p>
-                Al utilizar la aplicación, usted consiente el tratamiento descrito en
-                esta Política de Privacidad.
-              </p>
-
-              <h3>Contáctanos</h3>
-              <p>
-                Preguntas sobre privacidad o prácticas de datos:
-                <a href="mailto:android.endnote767@passinbox.com">android.endnote767@passinbox.com</a>.
-              </p>
-            </div>
-          </details>
+          <p class="policy-cta-wrap">
+            <a class="policy-cta" href="politicas-privacidad.html">Ver política completa &rarr;</a>
+          </p>
         </div>
       </div>
     </section>
