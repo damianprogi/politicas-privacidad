@@ -91,7 +91,6 @@
 
     .page-header {
       padding: clamp(2rem, 5vw, 3rem) 0 1.5rem;
-      border-bottom: 1px solid var(--color-border);
       background: var(--color-surface);
     }
 
@@ -100,8 +99,6 @@
       font-size: clamp(1.75rem, 4vw, 2.25rem);
       font-weight: 700;
       line-height: 1.2;
-      border-bottom: 2px solid var(--color-border);
-      padding-bottom: 0.65rem;
     }
 
     .page-header p {
@@ -123,10 +120,8 @@
 
     .policy-content h2 {
       margin: 2rem 0 0.75rem;
-      padding-bottom: 0.5rem;
       font-size: 1.2rem;
       font-weight: 700;
-      border-bottom: 2px solid var(--color-border);
       color: #111;
     }
 
@@ -177,7 +172,7 @@
   <nav class="site-nav" aria-label="Principal">
     <div class="wrap">
       <a class="site-nav__brand" href="index.html">CeluVentas</a>
-      <a class="site-nav__back" href="index.html#privacidad">&larr; Volver al inicio</a>
+      <a class="site-nav__back" href="index.html">&larr; Volver al inicio</a>
     </div>
   </nav>
 
@@ -297,7 +292,7 @@
         </p>
         <p>
           Para solicitar la baja de cuenta, consulte también la sección
-          <a href="index.html#eliminacion">Eliminación de cuenta</a> en la página principal.
+          <a href="#eliminacion">Eliminación de cuenta</a> más abajo en esta página.
         </p>
 
         <h2>Niños</h2>
@@ -350,6 +345,49 @@
           Si tienes alguna pregunta sobre esta Política de Privacidad o sobre las prácticas
           de datos de la Aplicación, ponte en contacto con el Proveedor de Servicios en
           <a href="mailto:android.endnote767@passinbox.com">android.endnote767@passinbox.com</a>.
+        </p>
+
+        <h2 id="eliminacion">Eliminación de cuenta</h2>
+        <p>
+          Los usuarios registrados pueden solicitar la <strong>eliminación permanente
+          de su cuenta</strong> y de los datos asociados almacenados en nuestros servicios.
+        </p>
+
+        <h3>Cómo solicitar la baja</h3>
+        <ol>
+          <li>
+            Envíe un correo electrónico desde la <strong>misma dirección de email</strong>
+            vinculada a su cuenta en CeluVentas.
+          </li>
+          <li>
+            Indique en el asunto o cuerpo del mensaje que desea eliminar su cuenta
+            de CeluVentas.
+          </li>
+          <li>
+            Escriba a:
+            <a href="mailto:android.endnote767@passinbox.com">android.endnote767@passinbox.com</a>
+          </li>
+        </ol>
+
+        <h3>Datos que se eliminan</h3>
+        <ul>
+          <li>Cuenta de usuario (Firebase Authentication)</li>
+          <li>Datos almacenados en Cloud Firestore vinculados a la cuenta</li>
+          <li>Datos sincronizados en la nube asociados al perfil</li>
+        </ul>
+
+        <h3>Datos que pueden conservarse</h3>
+        <ul>
+          <li>Registros técnicos y logs agregados o anonimizados</li>
+          <li>Datos de analíticas retenidos por proveedores externos según sus políticas</li>
+          <li>Información exigida por obligaciones legales aplicables</li>
+        </ul>
+
+        <p>
+          <strong>Plazo de procesamiento:</strong> las solicitudes verificadas se atenderán
+          en un plazo razonable, habitualmente dentro de los <strong>90 días hábiles</strong>
+          posteriores a la confirmación de identidad. Recibirá una respuesta por correo
+          cuando el proceso haya finalizado o si se requiere información adicional.
         </p>
       </article>
     </div>

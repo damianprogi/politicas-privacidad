@@ -3,19 +3,23 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="CeluVentas — aplicación móvil de gestión de ventas. Política de privacidad y eliminación de cuenta." />
+  <meta name="description" content="CeluVentas — aplicación móvil de gestión de ventas, clientes y métricas comerciales." />
   <title>CeluVentas — Gestión de ventas móviles</title>
   <style>
     :root {
-      --color-text: #1a1a1a;
-      --color-muted: #5c5c5c;
-      --color-border: #e4e4e7;
-      --color-bg: #fafafa;
-      --color-surface: #ffffff;
-      --color-accent: #0066cc;
-      --color-accent-hover: #004d99;
-      --max-width: 900px;
-      --section-pad: clamp(2.5rem, 6vw, 4rem);
+      --primary: #025e73;
+      --primary-hover: #1b6e81;
+      --secondary: #f2668b;
+      --tertiary: #03a688;
+      --text: #1f2937;
+      --text-muted: #6b7280;
+      --bg: #f7fafc;
+      --surface: #ffffff;
+      --border: #e5e7eb;
+      --shadow: 0 4px 24px rgba(2, 94, 115, 0.08);
+      --shadow-hover: 0 12px 32px rgba(2, 94, 115, 0.14);
+      --radius: 14px;
+      --max-width: 1100px;
     }
 
     *,
@@ -32,19 +36,25 @@
       margin: 0;
       font-family: Arial, Helvetica, sans-serif;
       font-size: 1rem;
-      line-height: 1.65;
-      color: var(--color-text);
-      background: var(--color-bg);
+      line-height: 1.6;
+      color: var(--text);
+      background: var(--bg);
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      background: linear-gradient(135deg, #e8f4f7 0%, #f0f4f8 100%);
     }
 
     a {
-      color: var(--color-accent);
+      color: var(--primary);
       text-decoration: none;
     }
 
     a:hover {
-      color: var(--color-accent-hover);
-      text-decoration: underline;
+      color: var(--primary-hover);
     }
 
     .wrap {
@@ -53,14 +63,14 @@
       padding: 0 1.25rem;
     }
 
-    /* —— Nav —— */
+    /* Nav */
     .site-nav {
       position: sticky;
       top: 0;
-      z-index: 10;
-      background: rgba(255, 255, 255, 0.92);
-      border-bottom: 1px solid var(--color-border);
-      backdrop-filter: blur(8px);
+      z-index: 20;
+      background: rgba(255, 255, 255, 0.94);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(10px);
     }
 
     .site-nav .wrap {
@@ -68,26 +78,24 @@
       align-items: center;
       justify-content: space-between;
       gap: 1rem;
-      padding-top: 0.75rem;
-      padding-bottom: 0.75rem;
+      padding: 0.85rem 1.25rem;
     }
 
     .site-nav__brand {
       font-weight: 700;
-      font-size: 1.05rem;
-      color: var(--color-text);
+      font-size: 1.15rem;
+      color: var(--primary);
       text-decoration: none;
     }
 
     .site-nav__brand:hover {
-      text-decoration: none;
-      color: var(--color-accent);
+      color: var(--primary-hover);
     }
 
     .site-nav__links {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.5rem 1.25rem;
+      gap: 0.35rem 1.25rem;
       list-style: none;
       margin: 0;
       padding: 0;
@@ -95,297 +103,421 @@
     }
 
     .site-nav__links a {
-      color: var(--color-muted);
+      color: var(--text-muted);
       text-decoration: none;
     }
 
     .site-nav__links a:hover {
-      color: var(--color-accent);
-      text-decoration: none;
+      color: var(--primary);
     }
 
-    /* —— Hero —— */
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      padding: 0.75rem 1.35rem;
+      font-size: 0.95rem;
+      font-weight: 600;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+    }
+
+    .btn:hover {
+      text-decoration: none;
+      transform: translateY(-1px);
+    }
+
+    .btn--primary {
+      background: var(--primary);
+      color: #fff;
+      box-shadow: 0 4px 14px rgba(2, 94, 115, 0.35);
+    }
+
+    .btn--primary:hover {
+      background: var(--primary-hover);
+      color: #fff;
+    }
+
+    .btn--secondary {
+      background: var(--tertiary);
+      color: #fff;
+      box-shadow: 0 4px 14px rgba(3, 166, 136, 0.3);
+    }
+
+    .btn--secondary:hover {
+      background: #029a7a;
+      color: #fff;
+    }
+
+    .btn--outline {
+      background: var(--surface);
+      color: var(--primary);
+      border: 2px solid var(--primary);
+    }
+
+    .btn--outline:hover {
+      background: rgba(2, 94, 115, 0.06);
+      color: var(--primary-hover);
+    }
+
+    /* Hero */
     .hero {
-      padding: var(--section-pad) 0;
-      text-align: center;
-      background: linear-gradient(180deg, var(--color-surface) 0%, var(--color-bg) 100%);
-      border-bottom: 1px solid var(--color-border);
+      padding: clamp(2.5rem, 7vw, 4.5rem) 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 100% 0%, rgba(3, 166, 136, 0.12) 0%, transparent 55%),
+        radial-gradient(ellipse 70% 50% at 0% 100%, rgba(242, 102, 139, 0.08) 0%, transparent 50%),
+        linear-gradient(180deg, #fff 0%, var(--bg) 100%);
+    }
+
+    .hero__grid {
+      display: grid;
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    @media (min-width: 768px) {
+      .hero__grid {
+        grid-template-columns: 1fr 1fr;
+      }
     }
 
     .hero__badge {
       display: inline-block;
       margin-bottom: 1rem;
-      padding: 0.35rem 0.85rem;
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.04em;
+      padding: 0.35rem 0.9rem;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
-      color: var(--color-accent);
-      background: #e8f2fc;
+      color: var(--tertiary);
+      background: rgba(3, 166, 136, 0.12);
       border-radius: 999px;
     }
 
     .hero h1 {
       margin: 0 0 0.75rem;
-      font-size: clamp(2rem, 5vw, 2.75rem);
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      line-height: 1.15;
+      font-size: clamp(2.25rem, 5.5vw, 3.25rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      color: var(--primary);
     }
 
     .hero__subtitle {
-      margin: 0 auto 1.5rem;
-      max-width: 36rem;
-      font-size: 1.125rem;
-      color: var(--color-muted);
+      margin: 0 0 1.5rem;
+      font-size: clamp(1.05rem, 2.5vw, 1.2rem);
+      color: var(--text-muted);
+      max-width: 32rem;
+    }
+
+    .hero__actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 1.25rem;
     }
 
     .hero__meta {
       margin: 0;
-      font-size: 0.95rem;
-      color: var(--color-muted);
+      font-size: 0.9rem;
+      color: var(--text-muted);
     }
 
     .hero__meta strong {
-      color: var(--color-text);
+      color: var(--text);
     }
 
-    /* —— Sections —— */
-    section {
-      padding: var(--section-pad) 0;
-      border-bottom: 1px solid var(--color-border);
+    .hero__visual {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: var(--shadow-hover);
+      border: 1px solid var(--border);
     }
 
-    section:last-of-type {
-      border-bottom: none;
+    .hero__visual img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
     }
 
-    .section-card {
-      background: var(--color-surface);
-      border: 1px solid var(--color-border);
-      border-radius: 12px;
-      padding: clamp(1.5rem, 4vw, 2.25rem);
+    .hero__visual::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 60%, rgba(2, 94, 115, 0.15) 100%);
+      pointer-events: none;
     }
 
-    h2 {
-      margin: 0 0 1.25rem;
-      padding-bottom: 0.65rem;
-      font-size: clamp(1.35rem, 3vw, 1.65rem);
+    /* Section common */
+    .section {
+      padding: clamp(3rem, 7vw, 5rem) 0;
+    }
+
+    .section--alt {
+      background: var(--surface);
+    }
+
+    .section__header {
+      text-align: center;
+      max-width: 36rem;
+      margin: 0 auto 2.5rem;
+    }
+
+    .section__header h2 {
+      margin: 0 0 0.65rem;
+      font-size: clamp(1.5rem, 3.5vw, 2rem);
       font-weight: 700;
-      border-bottom: 2px solid var(--color-border);
-      color: #111;
+      color: var(--primary);
     }
 
-    h3 {
-      margin: 1.5rem 0 0.5rem;
-      font-size: 1.05rem;
-      color: #222;
+    .section__header p {
+      margin: 0;
+      color: var(--text-muted);
     }
 
-    h3:first-of-type {
-      margin-top: 0;
-    }
-
-    p {
-      margin: 0 0 1rem;
-    }
-
-    p:last-child {
-      margin-bottom: 0;
-    }
-
-    ul {
-      margin: 0 0 1rem;
-      padding-left: 1.35rem;
-    }
-
-    li {
-      margin-bottom: 0.35rem;
-    }
-
-    .feature-grid {
+    /* Features */
+    .features-grid {
       display: grid;
-      gap: 1rem;
-      margin: 1.5rem 0 0;
+      gap: 1.25rem;
       list-style: none;
+      margin: 0;
       padding: 0;
     }
 
     @media (min-width: 600px) {
-      .feature-grid {
+      .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 900px) {
+      .features-grid {
         grid-template-columns: repeat(3, 1fr);
       }
-    }
 
-    .feature-grid li {
-      margin: 0;
-      padding: 1.1rem 1rem;
-      background: var(--color-bg);
-      border: 1px solid var(--color-border);
-      border-radius: 8px;
-      font-size: 0.95rem;
-    }
-
-    .feature-grid strong {
-      display: block;
-      margin-bottom: 0.35rem;
-      font-size: 0.9rem;
-      color: #111;
-    }
-
-    .callout {
-      margin: 1.25rem 0 0;
-      padding: 1rem 1.15rem;
-      background: #f0f7ff;
-      border-left: 4px solid var(--color-accent);
-      border-radius: 0 8px 8px 0;
-      font-size: 0.95rem;
-    }
-
-    .callout--neutral {
-      background: var(--color-bg);
-      border-left-color: var(--color-border);
-    }
-
-    /* —— Privacy summary —— */
-    .privacy-summary dl {
-      margin: 0;
-      display: grid;
-      gap: 1rem;
-    }
-
-    @media (min-width: 600px) {
-      .privacy-summary dl {
-        grid-template-columns: 1fr 1fr;
+      .features-grid li:last-child {
+        grid-column: span 1;
       }
     }
 
-    .privacy-summary dt {
-      font-weight: 700;
-      font-size: 0.9rem;
-      color: #111;
-      margin-bottom: 0.25rem;
+    @media (min-width: 900px) {
+      .features-grid--five li:nth-child(4),
+      .features-grid--five li:nth-child(5) {
+        grid-column: span 1;
+      }
     }
 
-    .privacy-summary dd {
+    @media (min-width: 768px) and (max-width: 899px) {
+      .features-grid--five li:last-child {
+        grid-column: 1 / -1;
+        max-width: 50%;
+        margin: 0 auto;
+      }
+    }
+
+    .feature-card {
+      background: var(--surface);
+      border-radius: var(--radius);
+      padding: 1.35rem;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-hover);
+      border-color: rgba(2, 94, 115, 0.25);
+    }
+
+    .feature-card:hover .feature-card__icon {
+      background: rgba(2, 94, 115, 0.14);
+    }
+
+    .feature-card--tertiary:hover {
+      border-color: rgba(3, 166, 136, 0.4);
+    }
+
+    .feature-card--tertiary:hover .feature-card__icon {
+      background: rgba(3, 166, 136, 0.14);
+    }
+
+    .feature-card__thumb {
+      width: 100%;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 1rem;
+    }
+
+    .feature-card__icon {
+      width: 2.75rem;
+      height: 2.75rem;
+      margin-bottom: 0.85rem;
+      border-radius: 10px;
+      background: rgba(2, 94, 115, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      transition: background 0.2s ease;
+    }
+
+    .feature-card h3 {
+      margin: 0 0 0.4rem;
+      font-size: 1.05rem;
+      color: var(--text);
+    }
+
+    .feature-card p {
       margin: 0;
-      color: var(--color-muted);
-      font-size: 0.95rem;
+      font-size: 0.92rem;
+      color: var(--text-muted);
     }
 
-    .third-party-list {
+    /* Tech chips */
+    .tech-section {
+      text-align: center;
+    }
+
+    .chip-list {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.5rem;
+      justify-content: center;
+      gap: 0.6rem;
       list-style: none;
-      padding: 0;
-      margin: 0.75rem 0 0;
-    }
-
-    .third-party-list li {
       margin: 0;
-      padding: 0.35rem 0.75rem;
-      font-size: 0.85rem;
-      background: var(--color-bg);
-      border: 1px solid var(--color-border);
-      border-radius: 6px;
-    }
-
-    .policy-cta-wrap {
-      margin-top: 1.75rem;
-      padding-top: 1.25rem;
-      border-top: 1px solid var(--color-border);
-    }
-
-    .policy-cta {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-      padding: 0.75rem 1.15rem;
-      font-weight: 600;
-      font-size: 0.95rem;
-      color: var(--color-accent);
-      background: #e8f2fc;
-      border: 1px solid #c5ddf5;
-      border-radius: 8px;
-      text-decoration: none;
-    }
-
-    .policy-cta:hover {
-      color: var(--color-accent-hover);
-      background: #dceaf9;
-      text-decoration: none;
-    }
-
-    /* —— Eliminación —— */
-    .steps {
-      counter-reset: step;
-      list-style: none;
       padding: 0;
-      margin: 1rem 0 0;
     }
 
-    .steps li {
-      position: relative;
-      padding-left: 2.5rem;
-      margin-bottom: 0.85rem;
-      counter-increment: step;
+    .chip {
+      padding: 0.5rem 1rem;
+      font-size: 0.88rem;
+      font-weight: 600;
+      border-radius: 999px;
+      border: 1px solid transparent;
     }
 
-    .steps li::before {
-      content: counter(step);
-      position: absolute;
-      left: 0;
-      top: 0.1rem;
-      width: 1.65rem;
-      height: 1.65rem;
-      line-height: 1.65rem;
-      text-align: center;
-      font-size: 0.8rem;
-      font-weight: 700;
-      color: var(--color-accent);
-      background: #e8f2fc;
-      border-radius: 50%;
+    .chip--primary {
+      color: var(--primary);
+      background: rgba(2, 94, 115, 0.1);
+      border-color: rgba(2, 94, 115, 0.2);
     }
 
-    .data-columns {
+    .chip--secondary {
+      color: #c43d62;
+      background: rgba(242, 102, 139, 0.12);
+      border-color: rgba(242, 102, 139, 0.25);
+    }
+
+    .chip--tertiary {
+      color: #02896f;
+      background: rgba(3, 166, 136, 0.12);
+      border-color: rgba(3, 166, 136, 0.25);
+    }
+
+    .tech-visual {
+      margin: 2rem auto 0;
+      max-width: 640px;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+    }
+
+    .tech-visual img {
+      width: 100%;
+      aspect-ratio: 16 / 7;
+      object-fit: cover;
+    }
+
+    /* Legal CTA */
+    .legal-grid {
       display: grid;
-      gap: 1rem;
-      margin-top: 1.25rem;
+      gap: 1.25rem;
     }
 
-    @media (min-width: 600px) {
-      .data-columns {
+    @media (min-width: 640px) {
+      .legal-grid {
         grid-template-columns: 1fr 1fr;
       }
     }
 
-    .data-columns h3 {
-      margin-top: 0;
-      font-size: 0.95rem;
+    .legal-card {
+      background: var(--surface);
+      border-radius: 16px;
+      padding: clamp(1.5rem, 4vw, 2rem);
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
     }
 
-    .data-columns ul {
-      margin-bottom: 0;
-      font-size: 0.95rem;
+    .legal-card h3 {
+      margin: 0;
+      font-size: 1.2rem;
+      color: var(--primary);
     }
 
-    /* —— Footer —— */
-    .site-footer {
-      padding: 2rem 0 2.5rem;
+    .legal-card p {
+      margin: 0;
+      flex: 1;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    .legal-card .btn {
+      align-self: flex-start;
+      width: 100%;
       text-align: center;
+    }
+
+    @media (min-width: 480px) {
+      .legal-card .btn {
+        width: auto;
+      }
+    }
+
+    .legal-card--accent {
+      border-top: 4px solid var(--secondary);
+    }
+
+    .legal-card--primary {
+      border-top: 4px solid var(--primary);
+    }
+
+    /* Footer */
+    .site-footer {
+      padding: 2.5rem 0;
+      text-align: center;
+      background: var(--primary);
+      color: rgba(255, 255, 255, 0.85);
       font-size: 0.9rem;
-      color: var(--color-muted);
-      background: var(--color-surface);
-      border-top: 1px solid var(--color-border);
+    }
+
+    .site-footer a {
+      color: #fff;
+      text-decoration: underline;
+    }
+
+    .site-footer a:hover {
+      color: rgba(255, 255, 255, 0.9);
     }
 
     .site-footer p {
-      margin: 0.25rem 0;
+      margin: 0.3rem 0;
     }
 
     .site-footer strong {
-      color: var(--color-text);
+      color: #fff;
+      font-size: 1rem;
     }
   </style>
 </head>
@@ -393,183 +525,166 @@
 
   <nav class="site-nav" aria-label="Principal">
     <div class="wrap">
-      <a class="site-nav__brand" href="#">CeluVentas</a>
+      <a class="site-nav__brand" href="index.html">CeluVentas</a>
       <ul class="site-nav__links">
-        <li><a href="#sobre">Sobre la app</a></li>
-        <li><a href="#privacidad">Privacidad</a></li>
-        <li><a href="#eliminacion">Eliminación de cuenta</a></li>
+        <li><a href="#features">Funciones</a></li>
+        <li><a href="#tecnologia">Tecnología</a></li>
+        <li><a href="#legal">Legal</a></li>
       </ul>
     </div>
   </nav>
 
   <header class="hero">
-    <div class="wrap">
-      <span class="hero__badge">Aplicación móvil</span>
-      <h1>CeluVentas</h1>
-      <p class="hero__subtitle">
-        Gestión de ventas desde el celular: registra operaciones, administra clientes
-        y mantén tus datos comerciales organizados donde trabajes.
-      </p>
-      <p class="hero__meta">
-        Desarrollada por <strong>Damián Diez</strong>
-      </p>
+    <div class="wrap hero__grid">
+      <div class="hero__content">
+        <span class="hero__badge">Android · Gestión comercial</span>
+        <h1>CeluVentas</h1>
+        <p class="hero__subtitle">
+          La app de gestión de ventas móviles para registrar operaciones,
+          administrar clientes y consultar métricas de tu negocio desde cualquier lugar.
+        </p>
+        <div class="hero__actions">
+          <a class="btn btn--primary" href="politicas-privacidad.html">Ver políticas</a>
+          <a class="btn btn--secondary" href="politicas-privacidad.html#eliminacion">Eliminar cuenta</a>
+        </div>
+        <p class="hero__meta">Desarrollada por <strong>Damián Diez</strong></p>
+      </div>
+      <figure class="hero__visual">
+        <img
+          src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=800&q=80&auto=format&fit=crop"
+          alt="Persona usando aplicación móvil de gestión comercial"
+          width="800"
+          height="600"
+          loading="eager"
+        />
+      </figure>
     </div>
   </header>
 
   <main>
-    <section id="sobre" aria-labelledby="sobre-titulo">
+    <section id="features" class="section" aria-labelledby="features-title">
       <div class="wrap">
-        <div class="section-card">
-          <h2 id="sobre-titulo">Sobre la aplicación</h2>
-          <p>
-            <strong>CeluVentas</strong> es una aplicación para Android orientada a
-            comercios y vendedores que necesitan llevar el control de sus ventas
-            de forma práctica desde el dispositivo móvil.
-          </p>
-          <p>
-            Permite registrar ventas, gestionar clientes y consultar información
-            comercial relevante para el día a día del negocio, con sincronización
-            en la nube cuando el usuario inicia sesión.
-          </p>
+        <header class="section__header">
+          <h2 id="features-title">Todo lo que necesitás para vender mejor</h2>
+          <p>Herramientas pensadas para comercios y vendedores en movimiento.</p>
+        </header>
 
-          <ul class="feature-grid" aria-label="Funcionalidades principales">
-            <li>
-              <strong>Ventas</strong>
-              Registro y seguimiento de operaciones comerciales.
-            </li>
-            <li>
-              <strong>Clientes</strong>
-              Administración de contactos y datos asociados.
-            </li>
-            <li>
-              <strong>Datos comerciales</strong>
-              Información de negocio accesible y sincronizable.
-            </li>
-          </ul>
-
-          <p class="callout">
-            La aplicación utiliza servicios de <strong>Firebase</strong> (autenticación,
-            base de datos, analíticas y estabilidad) y componentes de
-            <strong>Google Play Services</strong> para funcionamiento en dispositivos Android.
-            Puede mostrar publicidad mediante <strong>Google AdMob</strong>.
-          </p>
-        </div>
+        <ul class="features-grid features-grid--five">
+          <li>
+            <article class="feature-card">
+              <img
+                class="feature-card__thumb"
+                src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&q=80&auto=format&fit=crop"
+                alt=""
+                width="400"
+                height="120"
+                loading="lazy"
+              />
+              <div class="feature-card__icon" aria-hidden="true">📊</div>
+              <h3>Gestión de ventas</h3>
+              <p>Registrá y seguí cada operación comercial con rapidez desde el celular.</p>
+            </article>
+          </li>
+          <li>
+            <article class="feature-card feature-card--tertiary">
+              <img
+                class="feature-card__thumb"
+                src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400&q=80&auto=format&fit=crop"
+                alt=""
+                width="400"
+                height="120"
+                loading="lazy"
+              />
+              <div class="feature-card__icon" aria-hidden="true">👥</div>
+              <h3>Clientes y contactos</h3>
+              <p>Organizá tu cartera de clientes y accedé a sus datos cuando los necesites.</p>
+            </article>
+          </li>
+          <li>
+            <article class="feature-card">
+              <img
+                class="feature-card__thumb"
+                src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&q=80&auto=format&fit=crop"
+                alt=""
+                width="400"
+                height="120"
+                loading="lazy"
+              />
+              <div class="feature-card__icon" aria-hidden="true">📈</div>
+              <h3>Reportes y métricas</h3>
+              <p>Visualizá el rendimiento de tu negocio con información clara y actualizada.</p>
+            </article>
+          </li>
+          <li>
+            <article class="feature-card feature-card--tertiary">
+              <div class="feature-card__icon" aria-hidden="true">☁️</div>
+              <h3>Sincronización en la nube</h3>
+              <p>Tus datos seguros y disponibles con Firebase cuando iniciás sesión.</p>
+            </article>
+          </li>
+          <li>
+            <article class="feature-card">
+              <div class="feature-card__icon" aria-hidden="true">🔒</div>
+              <h3>Seguridad de datos</h3>
+              <p>Protección de tu información comercial con buenas prácticas y servicios confiables.</p>
+            </article>
+          </li>
+        </ul>
       </div>
     </section>
 
-    <section id="privacidad" aria-labelledby="privacidad-titulo">
+    <section id="tecnologia" class="section section--alt tech-section" aria-labelledby="tech-title">
       <div class="wrap">
-        <div class="section-card">
-          <h2 id="privacidad-titulo">Política de privacidad</h2>
-          <p>
-            Resumen de cómo CeluVentas trata la información. La aplicación se ofrece
-            de forma gratuita y &ldquo;tal cual&rdquo;, desarrollada por Damián Diez.
-          </p>
+        <header class="section__header">
+          <h2 id="tech-title">Tecnología de confianza</h2>
+          <p>CeluVentas se apoya en plataformas líderes para funcionamiento, análisis y estabilidad.</p>
+        </header>
 
-          <div class="privacy-summary">
-            <dl>
-              <div>
-                <dt>Datos que se recopilan</dt>
-                <dd>
-                  Datos que usted ingresa al usar la app; datos técnicos del dispositivo
-                  (tipo, sistema operativo, IP); datos de uso, analíticas e informes
-                  de fallos (crashes) para diagnóstico y mejora.
-                </dd>
-              </div>
-              <div>
-                <dt>Uso de los datos</dt>
-                <dd>
-                  Operar y mejorar la aplicación: estabilidad, rendimiento, experiencia
-                  de usuario y comunicaciones necesarias sobre el servicio.
-                </dd>
-              </div>
-              <div>
-                <dt>Servicios de terceros</dt>
-                <dd>
-                  Integración con proveedores externos bajo sus propias políticas:
-                </dd>
-              </div>
-              <div>
-                <dt>Venta de datos</dt>
-                <dd>
-                  <strong>No se venden datos personales.</strong> El contenido comercial
-                  que usted ingresa no se comercializa ni se comparte con fines de venta.
-                </dd>
-              </div>
-            </dl>
+        <ul class="chip-list" aria-label="Servicios integrados">
+          <li><span class="chip chip--primary">Firebase Auth</span></li>
+          <li><span class="chip chip--primary">Cloud Firestore</span></li>
+          <li><span class="chip chip--tertiary">Firebase Analytics</span></li>
+          <li><span class="chip chip--tertiary">Firebase Crashlytics</span></li>
+          <li><span class="chip chip--secondary">Google AdMob</span></li>
+          <li><span class="chip chip--primary">Google Play Services</span></li>
+        </ul>
 
-            <ul class="third-party-list" aria-label="Servicios de terceros">
-              <li>Firebase Auth</li>
-              <li>Cloud Firestore</li>
-              <li>Firebase Analytics</li>
-              <li>Firebase Crashlytics</li>
-              <li>Google Play Services</li>
-              <li>Google AdMob</li>
-            </ul>
-          </div>
-
-          <p class="callout callout--neutral" style="margin-top: 1.5rem;">
-            Esta aplicación <strong>no recopila ubicación precisa en tiempo real</strong>
-            del dispositivo.
-          </p>
-
-          <p class="policy-cta-wrap">
-            <a class="policy-cta" href="politicas-privacidad.html">Ver política completa &rarr;</a>
-          </p>
-        </div>
+        <figure class="tech-visual">
+          <img
+            src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=900&q=80&auto=format&fit=crop"
+            alt="Panel de análisis y datos comerciales"
+            width="900"
+            height="394"
+            loading="lazy"
+          />
+        </figure>
       </div>
     </section>
 
-    <section id="eliminacion" aria-labelledby="eliminacion-titulo">
+    <section id="legal" class="section" aria-labelledby="legal-title">
       <div class="wrap">
-        <div class="section-card">
-          <h2 id="eliminacion-titulo">Eliminación de cuenta</h2>
-          <p>
-            Los usuarios registrados pueden solicitar la <strong>eliminación permanente
-            de su cuenta</strong> y de los datos asociados almacenados en nuestros servicios.
-          </p>
+        <header class="section__header">
+          <h2 id="legal-title">Información legal</h2>
+          <p>Transparencia sobre privacidad y cómo solicitar la baja de tu cuenta.</p>
+        </header>
 
-          <h3>Cómo solicitar la baja</h3>
-          <ol class="steps">
-            <li>
-              Envíe un correo electrónico desde la <strong>misma dirección de email</strong>
-              vinculada a su cuenta en CeluVentas.
-            </li>
-            <li>
-              Indique en el asunto o cuerpo del mensaje que desea eliminar su cuenta
-              de CeluVentas.
-            </li>
-            <li>
-              Escriba a:
-              <a href="mailto:android.endnote767@passinbox.com">android.endnote767@passinbox.com</a>
-            </li>
-          </ol>
-
-          <div class="data-columns">
-            <div>
-              <h3>Datos que se eliminan</h3>
-              <ul>
-                <li>Cuenta de usuario (Firebase Authentication)</li>
-                <li>Datos almacenados en Cloud Firestore vinculados a la cuenta</li>
-                <li>Datos sincronizados en la nube asociados al perfil</li>
-              </ul>
-            </div>
-            <div>
-              <h3>Datos que pueden conservarse</h3>
-              <ul>
-                <li>Registros técnicos y logs agregados o anonimizados</li>
-                <li>Datos de analíticas retenidos por proveedores externos según sus políticas</li>
-                <li>Información exigida por obligaciones legales aplicables</li>
-              </ul>
-            </div>
-          </div>
-
-          <p class="callout">
-            <strong>Plazo de procesamiento:</strong> las solicitudes verificadas se atenderán
-            en un plazo razonable, habitualmente dentro de los <strong>90 días hábiles</strong>
-            posteriores a la confirmación de identidad. Recibirá una respuesta por correo
-            cuando el proceso haya finalizado o si se requiere información adicional.
-          </p>
+        <div class="legal-grid">
+          <article class="legal-card legal-card--primary">
+            <h3>Política de privacidad</h3>
+            <p>
+              Conocé qué datos recopilamos, cómo los usamos y qué servicios de terceros
+              integra la aplicación.
+            </p>
+            <a class="btn btn--primary" href="politicas-privacidad.html">Leer política completa</a>
+          </article>
+          <article class="legal-card legal-card--accent">
+            <h3>Eliminación de cuenta</h3>
+            <p>
+              Podés solicitar la eliminación permanente de tu cuenta y datos asociados
+              siguiendo el proceso indicado en nuestra documentación.
+            </p>
+            <a class="btn btn--secondary" href="politicas-privacidad.html#eliminacion">Cómo eliminar mi cuenta</a>
+          </article>
         </div>
       </div>
     </section>
@@ -578,9 +693,8 @@
   <footer class="site-footer">
     <div class="wrap">
       <p><strong>Damián Diez</strong></p>
-      <p>&copy; 2026 CeluVentas. Todos los derechos reservados.</p>
+      <p>&copy; 2026 CeluVentas</p>
       <p>
-        Contacto:
         <a href="mailto:android.endnote767@passinbox.com">android.endnote767@passinbox.com</a>
       </p>
     </div>
