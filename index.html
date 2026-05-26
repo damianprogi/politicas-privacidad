@@ -3,264 +3,720 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Política de privacidad - CeluVentas</title>
-
+  <meta name="description" content="CeluVentas — aplicación móvil de gestión de ventas. Política de privacidad y eliminación de cuenta." />
+  <title>CeluVentas — Gestión de ventas móviles</title>
   <style>
+    :root {
+      --color-text: #1a1a1a;
+      --color-muted: #5c5c5c;
+      --color-border: #e4e4e7;
+      --color-bg: #fafafa;
+      --color-surface: #ffffff;
+      --color-accent: #0066cc;
+      --color-accent-hover: #004d99;
+      --max-width: 900px;
+      --section-pad: clamp(2.5rem, 6vw, 4rem);
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
-      font-family: Arial, sans-serif;
-      line-height: 1.6;
-      max-width: 900px;
-      margin: 40px auto;
-      padding: 0 20px;
-      color: #222;
-    }
-
-    h1, h2, h3 {
-      color: #111;
-    }
-
-    h1 {
-      border-bottom: 2px solid #ddd;
-      padding-bottom: 10px;
-    }
-
-    ul {
-      padding-left: 20px;
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 1rem;
+      line-height: 1.65;
+      color: var(--color-text);
+      background: var(--color-bg);
     }
 
     a {
-      color: #0066cc;
+      color: var(--color-accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: var(--color-accent-hover);
+      text-decoration: underline;
+    }
+
+    .wrap {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 1.25rem;
+    }
+
+    /* —— Nav —— */
+    .site-nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(255, 255, 255, 0.92);
+      border-bottom: 1px solid var(--color-border);
+      backdrop-filter: blur(8px);
+    }
+
+    .site-nav .wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding-top: 0.75rem;
+      padding-bottom: 0.75rem;
+    }
+
+    .site-nav__brand {
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--color-text);
+      text-decoration: none;
+    }
+
+    .site-nav__brand:hover {
+      text-decoration: none;
+      color: var(--color-accent);
+    }
+
+    .site-nav__links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 1.25rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      font-size: 0.9rem;
+    }
+
+    .site-nav__links a {
+      color: var(--color-muted);
+      text-decoration: none;
+    }
+
+    .site-nav__links a:hover {
+      color: var(--color-accent);
+      text-decoration: none;
+    }
+
+    /* —— Hero —— */
+    .hero {
+      padding: var(--section-pad) 0;
+      text-align: center;
+      background: linear-gradient(180deg, var(--color-surface) 0%, var(--color-bg) 100%);
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .hero__badge {
+      display: inline-block;
+      margin-bottom: 1rem;
+      padding: 0.35rem 0.85rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+      background: #e8f2fc;
+      border-radius: 999px;
+    }
+
+    .hero h1 {
+      margin: 0 0 0.75rem;
+      font-size: clamp(2rem, 5vw, 2.75rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+    }
+
+    .hero__subtitle {
+      margin: 0 auto 1.5rem;
+      max-width: 36rem;
+      font-size: 1.125rem;
+      color: var(--color-muted);
+    }
+
+    .hero__meta {
+      margin: 0;
+      font-size: 0.95rem;
+      color: var(--color-muted);
+    }
+
+    .hero__meta strong {
+      color: var(--color-text);
+    }
+
+    /* —— Sections —— */
+    section {
+      padding: var(--section-pad) 0;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    section:last-of-type {
+      border-bottom: none;
+    }
+
+    .section-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 12px;
+      padding: clamp(1.5rem, 4vw, 2.25rem);
+    }
+
+    h2 {
+      margin: 0 0 1.25rem;
+      padding-bottom: 0.65rem;
+      font-size: clamp(1.35rem, 3vw, 1.65rem);
+      font-weight: 700;
+      border-bottom: 2px solid var(--color-border);
+      color: #111;
+    }
+
+    h3 {
+      margin: 1.5rem 0 0.5rem;
+      font-size: 1.05rem;
+      color: #222;
+    }
+
+    h3:first-of-type {
+      margin-top: 0;
+    }
+
+    p {
+      margin: 0 0 1rem;
+    }
+
+    p:last-child {
+      margin-bottom: 0;
+    }
+
+    ul {
+      margin: 0 0 1rem;
+      padding-left: 1.35rem;
+    }
+
+    li {
+      margin-bottom: 0.35rem;
+    }
+
+    .feature-grid {
+      display: grid;
+      gap: 1rem;
+      margin: 1.5rem 0 0;
+      list-style: none;
+      padding: 0;
+    }
+
+    @media (min-width: 600px) {
+      .feature-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .feature-grid li {
+      margin: 0;
+      padding: 1.1rem 1rem;
+      background: var(--color-bg);
+      border: 1px solid var(--color-border);
+      border-radius: 8px;
+      font-size: 0.95rem;
+    }
+
+    .feature-grid strong {
+      display: block;
+      margin-bottom: 0.35rem;
+      font-size: 0.9rem;
+      color: #111;
+    }
+
+    .callout {
+      margin: 1.25rem 0 0;
+      padding: 1rem 1.15rem;
+      background: #f0f7ff;
+      border-left: 4px solid var(--color-accent);
+      border-radius: 0 8px 8px 0;
+      font-size: 0.95rem;
+    }
+
+    .callout--neutral {
+      background: var(--color-bg);
+      border-left-color: var(--color-border);
+    }
+
+    /* —— Privacy summary —— */
+    .privacy-summary dl {
+      margin: 0;
+      display: grid;
+      gap: 1rem;
+    }
+
+    @media (min-width: 600px) {
+      .privacy-summary dl {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .privacy-summary dt {
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: #111;
+      margin-bottom: 0.25rem;
+    }
+
+    .privacy-summary dd {
+      margin: 0;
+      color: var(--color-muted);
+      font-size: 0.95rem;
+    }
+
+    .third-party-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      list-style: none;
+      padding: 0;
+      margin: 0.75rem 0 0;
+    }
+
+    .third-party-list li {
+      margin: 0;
+      padding: 0.35rem 0.75rem;
+      font-size: 0.85rem;
+      background: var(--color-bg);
+      border: 1px solid var(--color-border);
+      border-radius: 6px;
+    }
+
+    /* —— Details (política completa) —— */
+    .policy-toggle {
+      margin-top: 1.75rem;
+      border: 1px solid var(--color-border);
+      border-radius: 8px;
+      overflow: hidden;
+      background: var(--color-surface);
+    }
+
+    .policy-toggle summary {
+      padding: 1rem 1.15rem;
+      font-weight: 600;
+      cursor: pointer;
+      color: var(--color-accent);
+      background: var(--color-bg);
+      list-style: none;
+    }
+
+    .policy-toggle summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .policy-toggle summary::before {
+      content: '▸ ';
+      display: inline-block;
+      transition: transform 0.2s;
+    }
+
+    .policy-toggle[open] summary::before {
+      transform: rotate(90deg);
+    }
+
+    .policy-toggle__body {
+      padding: 1.25rem 1.15rem 1.5rem;
+      border-top: 1px solid var(--color-border);
+      font-size: 0.95rem;
+    }
+
+    .policy-toggle__body h3 {
+      font-size: 1rem;
+      margin-top: 1.25rem;
+    }
+
+    /* —— Eliminación —— */
+    .steps {
+      counter-reset: step;
+      list-style: none;
+      padding: 0;
+      margin: 1rem 0 0;
+    }
+
+    .steps li {
+      position: relative;
+      padding-left: 2.5rem;
+      margin-bottom: 0.85rem;
+      counter-increment: step;
+    }
+
+    .steps li::before {
+      content: counter(step);
+      position: absolute;
+      left: 0;
+      top: 0.1rem;
+      width: 1.65rem;
+      height: 1.65rem;
+      line-height: 1.65rem;
+      text-align: center;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--color-accent);
+      background: #e8f2fc;
+      border-radius: 50%;
+    }
+
+    .data-columns {
+      display: grid;
+      gap: 1rem;
+      margin-top: 1.25rem;
+    }
+
+    @media (min-width: 600px) {
+      .data-columns {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .data-columns h3 {
+      margin-top: 0;
+      font-size: 0.95rem;
+    }
+
+    .data-columns ul {
+      margin-bottom: 0;
+      font-size: 0.95rem;
+    }
+
+    /* —— Footer —— */
+    .site-footer {
+      padding: 2rem 0 2.5rem;
+      text-align: center;
+      font-size: 0.9rem;
+      color: var(--color-muted);
+      background: var(--color-surface);
+      border-top: 1px solid var(--color-border);
+    }
+
+    .site-footer p {
+      margin: 0.25rem 0;
+    }
+
+    .site-footer strong {
+      color: var(--color-text);
     }
   </style>
 </head>
 <body>
 
-  <h1>Política de privacidad</h1>
+  <nav class="site-nav" aria-label="Principal">
+    <div class="wrap">
+      <a class="site-nav__brand" href="#">CeluVentas</a>
+      <ul class="site-nav__links">
+        <li><a href="#sobre">Sobre la app</a></li>
+        <li><a href="#privacidad">Privacidad</a></li>
+        <li><a href="#eliminacion">Eliminación de cuenta</a></li>
+      </ul>
+    </div>
+  </nav>
 
-  <p>
-    Esta política de privacidad se aplica a la aplicación
-    <strong>"CeluVentas"</strong> (en adelante, la "Aplicación")
-    para dispositivos móviles, desarrollada por
-    <strong>Damián Diez</strong> (en adelante, el "Proveedor de servicios").
-    La Aplicación se proporciona de forma gratuita y "tal cual".
-  </p>
+  <header class="hero">
+    <div class="wrap">
+      <span class="hero__badge">Aplicación móvil</span>
+      <h1>CeluVentas</h1>
+      <p class="hero__subtitle">
+        Gestión de ventas desde el celular: registra operaciones, administra clientes
+        y mantén tus datos comerciales organizados donde trabajes.
+      </p>
+      <p class="hero__meta">
+        Desarrollada por <strong>Damián Diez</strong>
+      </p>
+    </div>
+  </header>
 
-  <h2>¿Qué información obtiene la Aplicación y cómo se utiliza?</h2>
+  <main>
+    <section id="sobre" aria-labelledby="sobre-titulo">
+      <div class="wrap">
+        <div class="section-card">
+          <h2 id="sobre-titulo">Sobre la aplicación</h2>
+          <p>
+            <strong>CeluVentas</strong> es una aplicación para Android orientada a
+            comercios y vendedores que necesitan llevar el control de sus ventas
+            de forma práctica desde el dispositivo móvil.
+          </p>
+          <p>
+            Permite registrar ventas, gestionar clientes y consultar información
+            comercial relevante para el día a día del negocio, con sincronización
+            en la nube cuando el usuario inicia sesión.
+          </p>
 
-  <h3>Información proporcionada por el usuario</h3>
+          <ul class="feature-grid" aria-label="Funcionalidades principales">
+            <li>
+              <strong>Ventas</strong>
+              Registro y seguimiento de operaciones comerciales.
+            </li>
+            <li>
+              <strong>Clientes</strong>
+              Administración de contactos y datos asociados.
+            </li>
+            <li>
+              <strong>Datos comerciales</strong>
+              Información de negocio accesible y sincronizable.
+            </li>
+          </ul>
 
-  <p>
-    La Aplicación recopila la información que usted proporciona
-    voluntariamente al utilizar ciertas funciones de la misma.
-    El registro con el Proveedor de servicios no es obligatorio.
-    Sin embargo, algunas funciones de la Aplicación podrían no
-    estar disponibles si no se registra.
-  </p>
+          <p class="callout">
+            La aplicación utiliza servicios de <strong>Firebase</strong> (autenticación,
+            base de datos, analíticas y estabilidad) y componentes de
+            <strong>Google Play Services</strong> para funcionamiento en dispositivos Android.
+            Puede mostrar publicidad mediante <strong>Google AdMob</strong>.
+          </p>
+        </div>
+      </div>
+    </section>
 
-  <p>
-    El Proveedor de servicios podrá utilizar la información
-    que usted proporcione para contactarlo periódicamente
-    con información importante o avisos necesarios relacionados
-    con la Aplicación.
-  </p>
+    <section id="privacidad" aria-labelledby="privacidad-titulo">
+      <div class="wrap">
+        <div class="section-card">
+          <h2 id="privacidad-titulo">Política de privacidad</h2>
+          <p>
+            Resumen de cómo CeluVentas trata la información. La aplicación se ofrece
+            de forma gratuita y &ldquo;tal cual&rdquo;, desarrollada por Damián Diez.
+          </p>
 
-  <h3>Información recopilada automáticamente</h3>
+          <div class="privacy-summary">
+            <dl>
+              <div>
+                <dt>Datos que se recopilan</dt>
+                <dd>
+                  Datos que usted ingresa al usar la app; datos técnicos del dispositivo
+                  (tipo, sistema operativo, IP); datos de uso, analíticas e informes
+                  de fallos (crashes) para diagnóstico y mejora.
+                </dd>
+              </div>
+              <div>
+                <dt>Uso de los datos</dt>
+                <dd>
+                  Operar y mejorar la aplicación: estabilidad, rendimiento, experiencia
+                  de usuario y comunicaciones necesarias sobre el servicio.
+                </dd>
+              </div>
+              <div>
+                <dt>Servicios de terceros</dt>
+                <dd>
+                  Integración con proveedores externos bajo sus propias políticas:
+                </dd>
+              </div>
+              <div>
+                <dt>Venta de datos</dt>
+                <dd>
+                  <strong>No se venden datos personales.</strong> El contenido comercial
+                  que usted ingresa no se comercializa ni se comparte con fines de venta.
+                </dd>
+              </div>
+            </dl>
 
-  <p>
-    La Aplicación puede recopilar automáticamente cierta información
-    a través de servicios de terceros, incluyendo, entre otros,
-    el tipo de dispositivo móvil que utiliza, su dirección IP,
-    su sistema operativo móvil, datos de uso de la aplicación,
-    informes de errores y datos de rendimiento.
-  </p>
+            <ul class="third-party-list" aria-label="Servicios de terceros">
+              <li>Firebase Auth</li>
+              <li>Cloud Firestore</li>
+              <li>Firebase Analytics</li>
+              <li>Firebase Crashlytics</li>
+              <li>Google Play Services</li>
+              <li>Google AdMob</li>
+            </ul>
+          </div>
 
-  <p>
-    Esta información se utiliza exclusivamente para mejorar la estabilidad,
-    el rendimiento y la experiencia del usuario de la Aplicación.
-  </p>
+          <p class="callout callout--neutral" style="margin-top: 1.5rem;">
+            Esta aplicación <strong>no recopila ubicación precisa en tiempo real</strong>
+            del dispositivo.
+          </p>
 
-  <h2>
-    ¿La aplicación recopila información precisa de la ubicación del dispositivo en tiempo real?
-  </h2>
+          <details class="policy-toggle">
+            <summary>Ver política completa</summary>
+            <div class="policy-toggle__body">
+              <p>
+                Esta política de privacidad se aplica a la aplicación
+                <strong>&ldquo;CeluVentas&rdquo;</strong> (en adelante, la &ldquo;Aplicación&rdquo;)
+                para dispositivos móviles, desarrollada por
+                <strong>Damián Diez</strong> (en adelante, el &ldquo;Proveedor de servicios&rdquo;).
+                La Aplicación se proporciona de forma gratuita y &ldquo;tal cual&rdquo;.
+              </p>
 
-  <p>
-    Esta aplicación no recopila información precisa en tiempo real
-    sobre la ubicación de su dispositivo móvil.
-  </p>
+              <h3>¿Qué información obtiene la Aplicación y cómo se utiliza?</h3>
+              <p><strong>Información proporcionada por el usuario</strong></p>
+              <p>
+                La Aplicación recopila la información que usted proporciona voluntariamente
+                al utilizar ciertas funciones. El registro no es obligatorio, aunque algunas
+                funciones pueden no estar disponibles sin cuenta.
+              </p>
+              <p>
+                El Proveedor de servicios podrá utilizar la información que usted proporcione
+                para contactarlo con avisos importantes relacionados con la Aplicación.
+              </p>
+              <p><strong>Información recopilada automáticamente</strong></p>
+              <p>
+                La Aplicación puede recopilar automáticamente información a través de servicios
+                de terceros: tipo de dispositivo, dirección IP, sistema operativo, datos de uso,
+                informes de errores y rendimiento. Se utiliza para mejorar estabilidad,
+                rendimiento y experiencia del usuario.
+              </p>
 
-  <h2>¿Se almacena la información en un servidor?</h2>
+              <h3>¿Ubicación en tiempo real?</h3>
+              <p>
+                Esta aplicación no recopila información precisa en tiempo real sobre la
+                ubicación de su dispositivo móvil.
+              </p>
 
-  <p>
-    Los datos ingresados por el usuario pueden almacenarse localmente
-    en el dispositivo y/o en servicios cloud (almacenamiento en la nube)
-    asociados a la cuenta del usuario.
-  </p>
+              <h3>¿Se almacena la información en un servidor?</h3>
+              <p>
+                Los datos pueden almacenarse localmente en el dispositivo y/o en servicios
+                cloud asociados a su cuenta. Se utiliza infraestructura de terceros para
+                almacenamiento y sincronización. El Proveedor no vende ni comparte el
+                contenido comercial ingresado por el usuario. Datos técnicos y analíticos
+                pueden transmitirse a terceros para monitoreo y mejora.
+              </p>
 
-  <p>
-    La Aplicación utiliza infraestructura de terceros para almacenamiento
-    y sincronización de datos.
-  </p>
+              <h3>¿Terceros tienen acceso a la información?</h3>
+              <p>
+                Solo se comparten datos técnicos y de uso con proveedores externos para
+                análisis, informes de errores y publicidad. El proveedor no vende ni
+                comparte datos personales de los usuarios.
+              </p>
+              <ul>
+                <li>Servicios de Google Play</li>
+                <li>AdMob</li>
+                <li>Google Analytics para Firebase</li>
+                <li>Firebase Crashlytics</li>
+                <li>Firebase Authentication</li>
+                <li>Cloud Firestore</li>
+              </ul>
 
-  <p>
-    El Proveedor no vende ni comparte el contenido comercial ingresado
-    por el usuario.
-  </p>
+              <h3>Derechos de exclusión</h3>
+              <p>
+                Puede detener la recopilación desinstalando la aplicación mediante los
+                procesos estándar de su dispositivo o la tienda de aplicaciones.
+              </p>
 
-  <p>
-    Sin embargo, ciertos datos técnicos, como informes de errores
-    y datos analíticos, pueden recopilarse y transmitirse a servicios
-    de terceros para ayudar a monitorear el rendimiento de la aplicación
-    y mejorar la experiencia del usuario.
-  </p>
+              <h3>Retención y gestión de información</h3>
+              <p>
+                Los datos locales permanecen bajo su control y pueden eliminarse borrando
+                datos de la app o desinstalándola. Los datos sincronizados se eliminan del
+                servidor al solicitar la baja de cuenta o, en algunos casos, tras períodos
+                prolongados de inactividad (por ejemplo, un año sin actividad).
+              </p>
+              <p>
+                La información técnica automática se conserva según las políticas de los
+                proveedores externos. Consultas:
+                <a href="mailto:android.endnote767@passinbox.com">android.endnote767@passinbox.com</a>.
+              </p>
 
-  <h2>
-    ¿Terceros ven o tienen acceso a la información obtenida por la aplicación?
-  </h2>
+              <h3>Niños</h3>
+              <p>
+                No está destinada a menores de 13 años. No se recopila intencionalmente
+                información de menores; si se detecta, se eliminará. Contacto para padres
+                o tutores: mismo correo de soporte.
+              </p>
 
-  <p>
-    Solo se comparten datos técnicos y de uso con proveedores
-    de servicios externos para fines de análisis, informes de errores
-    y publicidad.
-  </p>
+              <h3>Publicidad</h3>
+              <p>
+                La Aplicación puede mostrar anuncios mediante Google AdMob, conforme a las
+                políticas de privacidad del proveedor.
+              </p>
 
-  <p>
-    El proveedor del servicio no vende ni comparte datos personales
-    de los usuarios.
-  </p>
+              <h3>Seguridad</h3>
+              <p>
+                Se adoptan medidas razonables para proteger la información. Ningún método
+                de transmisión o almacenamiento es 100% seguro.
+              </p>
 
-  <p>
-    La aplicación utiliza los siguientes servicios de terceros,
-    que pueden recopilar información de acuerdo con sus propias
-    políticas de privacidad:
-  </p>
+              <h3>Cambios</h3>
+              <p>
+                Esta política puede actualizarse periódicamente en esta página. El uso
+                continuado tras los cambios implica aceptación. Vigente desde el
+                <strong>26 de mayo de 2026</strong>.
+              </p>
 
-  <ul>
-    <li>Servicios de Google Play</li>
-    <li>AdMob</li>
-    <li>Google Analytics para Firebase</li>
-    <li>Firebase Crashlytics</li>
-    <li>Firebase Authentication</li>
-    <li>Cloud Firestore</li>
-  </ul>
+              <h3>Su consentimiento</h3>
+              <p>
+                Al utilizar la aplicación, usted consiente el tratamiento descrito en
+                esta Política de Privacidad.
+              </p>
 
-  <h2>¿Cuáles son mis derechos de exclusión?</h2>
+              <h3>Contáctanos</h3>
+              <p>
+                Preguntas sobre privacidad o prácticas de datos:
+                <a href="mailto:android.endnote767@passinbox.com">android.endnote767@passinbox.com</a>.
+              </p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
 
-  <p>
-    Puede detener la recopilación de información por parte de la aplicación
-    desinstalándola mediante los procesos de desinstalación estándar
-    disponibles en su dispositivo móvil o a través de la tienda de aplicaciones.
-  </p>
+    <section id="eliminacion" aria-labelledby="eliminacion-titulo">
+      <div class="wrap">
+        <div class="section-card">
+          <h2 id="eliminacion-titulo">Eliminación de cuenta</h2>
+          <p>
+            Los usuarios registrados pueden solicitar la <strong>eliminación permanente
+            de su cuenta</strong> y de los datos asociados almacenados en nuestros servicios.
+          </p>
 
-  <h2>Política de retención de datos y gestión de su información</h2>
+          <h3>Cómo solicitar la baja</h3>
+          <ol class="steps">
+            <li>
+              Envíe un correo electrónico desde la <strong>misma dirección de email</strong>
+              vinculada a su cuenta en CeluVentas.
+            </li>
+            <li>
+              Indique en el asunto o cuerpo del mensaje que desea eliminar su cuenta
+              de CeluVentas.
+            </li>
+            <li>
+              Escriba a:
+              <a href="mailto:android.endnote767@passinbox.com">android.endnote767@passinbox.com</a>
+            </li>
+          </ol>
 
-  <p>
-    Los datos introducidos por el usuario y almacenados localmente
-    en el dispositivo permanecen bajo su control y pueden eliminarse
-    borrando los datos de la aplicación o desinstalándola.
-  </p>
+          <div class="data-columns">
+            <div>
+              <h3>Datos que se eliminan</h3>
+              <ul>
+                <li>Cuenta de usuario (Firebase Authentication)</li>
+                <li>Datos almacenados en Cloud Firestore vinculados a la cuenta</li>
+                <li>Datos sincronizados en la nube asociados al perfil</li>
+              </ul>
+            </div>
+            <div>
+              <h3>Datos que pueden conservarse</h3>
+              <ul>
+                <li>Registros técnicos y logs agregados o anonimizados</li>
+                <li>Datos de analíticas retenidos por proveedores externos según sus políticas</li>
+                <li>Información exigida por obligaciones legales aplicables</li>
+              </ul>
+            </div>
+          </div>
 
-  <p>
-    Los datos introducidos y sincronizados serán eliminados de los servidores
-    cuando el usuario solicite la eliminación de la cuenta o también podrán
-    ser eliminados automáticamente luego de períodos prolongados de inactividad,
-    por ejemplo, tras un año sin actividad de la cuenta.
-  </p>
+          <p class="callout">
+            <strong>Plazo de procesamiento:</strong> las solicitudes verificadas se atenderán
+            en un plazo razonable, habitualmente dentro de los <strong>90 días hábiles</strong>
+            posteriores a la confirmación de identidad. Recibirá una respuesta por correo
+            cuando el proceso haya finalizado o si se requiere información adicional.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
 
-  <p>
-    La información técnica recopilada automáticamente es conservada
-    por los proveedores de servicios externos de acuerdo con sus respectivas
-    políticas de privacidad.
-  </p>
-
-  <p>
-    Si tiene preguntas o solicitudes relacionadas con la eliminación de datos,
-    puede ponerse en contacto con el Proveedor de servicios en
-    <a href="mailto:android.endnote767@passinbox.com">
-      android.endnote767@passinbox.com
-    </a>
-  </p>
-
-  <h2>Niños</h2>
-
-  <p>
-    Esta aplicación no está destinada a menores de 13 años.
-    El proveedor del servicio no recopila intencionadamente
-    información personal identificable de menores de 13 años.
-  </p>
-
-  <p>
-    Si el proveedor del servicio tiene conocimiento de que un menor
-    de 13 años ha proporcionado información personal, dicha información
-    será eliminada.
-  </p>
-
-  <p>
-    Si usted es padre, madre o tutor legal y cree que su hijo/a
-    ha proporcionado información personal, póngase en contacto
-    con el proveedor del servicio en
-    <a href="mailto:android.endnote767@passinbox.com">
-      android.endnote767@passinbox.com
-    </a>.
-  </p>
-
-  <h2>Publicidad</h2>
-
-  <p>
-    La Aplicación puede mostrar anuncios mediante servicios
-    de terceros como Google AdMob.
-  </p>
-
-  <p>
-    Estos anuncios pueden utilizar información técnica del dispositivo
-    conforme a las políticas de privacidad de dichos proveedores.
-  </p>
-
-  <h2>Seguridad</h2>
-
-  <p>
-    El proveedor del servicio adopta medidas razonables para salvaguardar
-    la confidencialidad de la información.
-  </p>
-
-  <p>
-    Sin embargo, tenga en cuenta que ningún método de transmisión
-    o almacenamiento es 100% seguro y no se puede garantizar
-    la seguridad absoluta.
-  </p>
-
-  <h2>Cambios</h2>
-
-  <p>
-    Esta Política de Privacidad puede actualizarse periódicamente.
-    Cualquier cambio se reflejará en esta página.
-  </p>
-
-  <p>
-    El uso continuado de la aplicación tras la publicación de los cambios
-    constituye la aceptación de dichos cambios.
-  </p>
-
-  <p>
-    Esta Política de Privacidad entra en vigor el 26 de mayo de 2026.
-  </p>
-
-  <h2>Su consentimiento</h2>
-
-  <p>
-    Al utilizar la aplicación, usted consiente el tratamiento
-    de la información según se describe en esta Política de Privacidad.
-  </p>
-
-  <h2>Contáctanos</h2>
-
-  <p>
-    Si tienes alguna pregunta sobre esta Política de Privacidad
-    o sobre las prácticas de datos de la Aplicación,
-    ponte en contacto con el Proveedor de Servicios en
-    <a href="mailto:android.endnote767@passinbox.com">
-      android.endnote767@passinbox.com
-    </a>.
-  </p>
+  <footer class="site-footer">
+    <div class="wrap">
+      <p><strong>Damián Diez</strong></p>
+      <p>&copy; 2026 CeluVentas. Todos los derechos reservados.</p>
+      <p>
+        Contacto:
+        <a href="mailto:android.endnote767@passinbox.com">android.endnote767@passinbox.com</a>
+      </p>
+    </div>
+  </footer>
 
 </body>
 </html>
